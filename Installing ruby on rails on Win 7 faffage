@@ -1,5 +1,11 @@
 Installing ruby on rails on Win 7 faffage!
 
+Prerequisites:
+- A win7 machine with admin access
+- Git installed (msysgit) and working knowledge of this and the bash shell
+- A bitbucket account and experience working with these repos
+- google fu > white belt, just in case!
+
 
 First of all uninstall and delete any previous ruby installs you may have lying around, I had 1.9, 2 and 2.2!
 
@@ -89,6 +95,21 @@ This time I was using the terminal window in Aptana, and between each gem instal
 - gem install rails_stdout_logging -v '0.0.3'
 - gem install rails_12factor -v '0.0.2'
 
-All done, phew!
+New gems done, phew!
+
+I could/should have used the command 'bundle install --without production' to prevent the need to install locally (but still update the lock file used on deploy to production), however I've done it now so have postrges and dependent gems installed locally and an updated lockfile ready for deploy to heroku (according to the tutorial, we'll see whappens on deploy!)
+
+I've used Heroku before, but from my ubuntu machine, so we need the toolbelt installing here (my win7 machine) first, you can get that from here;
+
+https://toolbelt.heroku.com/
+
+You may also need/want to update your version of git for windows (msysgit), Heroku toolbelt informed me my version was riddled with security issues (1.9.3) so I upgraded to the latest (1.9.5 at time of writing this) by getting it from here; https://msysgit.github.io/
+
+
+
+
+
+
+
 
 
