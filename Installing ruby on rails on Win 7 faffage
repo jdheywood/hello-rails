@@ -1,0 +1,94 @@
+Installing ruby on rails on Win 7 faffage!
+
+
+First of all uninstall and delete any previous ruby installs you may have lying around, I had 1.9, 2 and 2.2!
+
+Next, from stack overflow; 
+
+
+-Download Ruby 1.9.3 from rubyinstaller.org http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-1.9.3-p550.exe?direct 
+-Download DevKit file from rubyinstaller.org - for Ruby 1.9.3 use DevKit-tdm-32-4.5.2-20110712-1620-sfx.exe https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe
+- Extract DevKit to path C:\Ruby193\DevKit
+- Run cd C:\Ruby193\DevKit
+- Run ruby dk.rb init
+- Run ruby dk.rb review
+- Run ruby dk.rb install
+- To return to the problem at hand, you should be able to install JSON (or otherwise test that your DevKit successfully installed) by running the following commands which will perform an install of the JSON gem and then use it:
+
+- gem install json --platform=ruby
+- ruby -rubygems -e "require 'json'; puts JSON.load('[42]').inspect"
+
+
+- In theory you should now be able to new up a rails project, for example; 
+
+rails new C:\dev\rails-example\rails-example
+
+
+In reality I found I was still missing some gems, and successive attempts at creating a ruby project using the command above yielded the following suggestions, (1 at a time I might add, thanks ruby!);
+
+- gem install rake -v '10.4.2'
+- gem install mini_portile -v '0.6.2'
+- gem install nokogiri -v '1.6.6.2'
+- gem install debug_inspector -v '0.0.2'
+- gem install binding_of_caller -v '0.7.2'
+- gem install coffee-script-source -v '1.9.1.1'
+- gem install execjs -v '2.5.2'
+- gem install coffee-script -v '2.4.1'
+- gem install coffee-rails -v '4.1.0'
+- gem install columnize -v '0.9.0'
+- gem install debugger-linecache -v '1.2.0'
+- gem install debugger-ruby_core_source -v '1.3.8'
+- gem install debugger -v '1.6.8'
+- gem install multi_json -v '1.11.2'
+- gem install jbuilder -v '2.3.1'
+- gem install jquery-rails -v '4.0.4'
+- gem install rdoc -v '4.2.0'
+- gem install sass -v '3.4.16'
+- gem install tilt -v '1.4.1'
+- gem install sass-rails -v '5.0.3'
+- gem install sdoc -v '0.4.1'
+- gem install sqlite3 -v '1.3.10'
+- gem install turbolinks -v '2.5.3'
+- gem install tzinfo-data -v '1.2015.5'
+- gem install uglifier -v '2.7.1'
+- gem install web-console -v '2.2.1'
+
+
+next start her up with the following command;
+
+rails server
+
+This boots the app and starts on a specific port of localhost (3000 by default)
+
+
+Cool beans........
+
+
+
+https://www.railstutorial.org/book/beginning#aside-barrier
+
+Following this tutorial I started a new rails app called hello_app
+
+
+Next we need an IDE, I chose Aptana Studio 3 as its free and I'm a cheapskate; get it here: http://www.aptana.com/ 
+
+Once you open this up set your dev folder as the workspace, then navigate to your app folder and promote it to a project (from the right-click menu in the project explorer window of the IDE).
+
+It looks like this creates you a .project file in your app folder, which presumably stored user/app settings etc, it also changes the icon on the ap folder in the project explorer window of aptana - fair enough, we'll check in this .project file to our repo as well then
+
+Oh yeah, I set up a private repo in my bitbucket for this, just to keep track of what I'm doing.
+
+
+
+For deployment to Heroku I updated the Gemfile to include postgres (as Heroku uses this db), and this meant more gem dependency faffage. 
+
+This time I was using the terminal window in Aptana, and between each gem install running bundle install to pick up the new gems and reinstall dependencies, which is what rails new runs anyway, so the same issue/resolution but in my IDE within the sample project now, nice!
+
+- gem install pg -v '0.17.1'
+- gem install rails_serve_static_assets -v '0.0.4'
+- gem install rails_stdout_logging -v '0.0.3'
+- gem install rails_12factor -v '0.0.2'
+
+All done, phew!
+
+
