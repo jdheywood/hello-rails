@@ -105,6 +105,37 @@ https://toolbelt.heroku.com/
 
 You may also need/want to update your version of git for windows (msysgit), Heroku toolbelt informed me my version was riddled with security issues (1.9.3) so I upgraded to the latest (1.9.5 at time of writing this) by getting it from here; https://msysgit.github.io/
 
+So run these commands to login, create and deploy to heroku:
+
+$ heroku login
+$ heroku create
+$ git push heroku master
+
+If you get any hassle from the push to Heroku then you probably haven't got your app in the root of your repository, which is the issue I found. So ensure you do
+
+The error I got was; 
+
+Heroku push rejected, no Cedar-supported app detected
+
+Which is odd as the command $ heroku create created me a Cedar app (it detects this from your Gemfile I believe).
+
+This stack overflow article heled me, specifically the 3rd answer about the rails app not being in the repo root
+
+http://stackoverflow.com/questions/8361475/heroku-push-rejected-no-cedar-supported-app-detected
+
+Re-issuing the push to heroku now failed for a different reason, mainly that sqlite is not supported by heroku (they use postgres as mentioned earlier), so I had to do some re-jigging of my Gemfile to bring in line with the tutorial. This resulted in yet more gem dependency chasing, as per below;
+
+- gem install slop -v '3.6.0'
+- gem install spring -v '1.1.3'
+
+
+Ok so after moving my rails app up to the root of the repository, and after sorting out my Gemfile and chasing gems I was able to push to my heroku remote and deploy my sample rails app, cool, gotta love heroku
+
+
+
+
+
+
 
 
 
